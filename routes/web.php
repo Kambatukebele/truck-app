@@ -25,13 +25,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/retrieve', function (User $user, Role $role){
-//     $user = User::where('id', 1)->with(['role'])->get();  
-//     return $user; 
-// }); 
+Route::get('/retrieve', function (User $user, Role $role){
+    $user = User::where('id', 1)->with(['role'])->get();  
+    return $user; 
+}); 
 
 Route::prefix('account')->group(function (){
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index']);
+    Route::get('/admin-dashboard/logs', [AdminDashboardController::class, 'logs'])->name('logs');
     Route::get('/broker-dashboard', [BrokerDashboardController::class, 'index']);
     Route::get('/carrier-dashboard', [CarrierDashboardController::class, 'index']);
     Route::get('/shipper-dashboard', [ShipperDashboardController::class, 'index']);

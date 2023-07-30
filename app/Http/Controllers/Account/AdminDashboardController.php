@@ -14,6 +14,11 @@ class AdminDashboardController extends Controller
     {
         return view('account/admin-dashboard/index'); 
     }
+    //delete the function below
+    public function logs()
+    {
+        return view('account.admin-dashboard.logs'); 
+    }
 
     /**
      * Show the form for creating a new resource.

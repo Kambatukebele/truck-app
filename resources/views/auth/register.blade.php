@@ -65,7 +65,7 @@
                     {{-- <input type="password" name="password" value="{{ old('password') }}" id=""
                     placeholder="ex:********"
                     class="w-full rounded-lg bg-gray-50 border-gray-200 lg:w-[300px]"> --}}
-                    <x-input-error :messages="$errors->get('role_title')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('role_id')" class="mt-2" />
                 </div>
             </div>
 

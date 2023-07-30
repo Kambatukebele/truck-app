@@ -41,9 +41,7 @@
 
 
             <button type="submit"
-                class="w-full my-3 bg-blue-800 hover:bg-blue-950 text-white font-poppins rounded py-2 cursor-pointer text-base lg:w-[200px]">Create
-                an
-                Account
+                class="w-full my-3 bg-blue-800 hover:bg-blue-950 text-white font-poppins rounded py-2 cursor-pointer text-base lg:w-[200px]">Login
             </button>
         </form>
     </div>
