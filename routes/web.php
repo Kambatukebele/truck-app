@@ -2,6 +2,7 @@
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Account\AdminDashboardController;
@@ -26,22 +27,28 @@ Route::get('/', function () {
 });
 
 Route::get('/retrieve', function (User $user, Role $role){
-    $user = User::where('id', 1)->with(['role'])->get();  
-    return $user; 
+    // $user = Auth::user()->with(['role']); 
+    // return $user->role_id; 
+    // $user = User::where('id', 1)->with(['role'])->get();  
+    // return $user; 
 }); 
 
 Route::prefix('account')->group(function (){
-    Route::get('/admin-dashboard', [AdminDashboardController::class, 'index']);
-    Route::get('/admin-dashboard/logs', [AdminDashboardController::class, 'logs'])->name('logs');
-    Route::get('/broker-dashboard', [BrokerDashboardController::class, 'index']);
-    Route::get('/carrier-dashboard', [CarrierDashboardController::class, 'index']);
-    Route::get('/shipper-dashboard', [ShipperDashboardController::class, 'index']);
-    Route::get('/global-user-dashboard', [GlobalUserDashboardController::class, 'index']);
+    Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->middleware(['auth','isAdmin', 'verified'])->name('admin-dashboard');
+    Route::get('/admin-dashboard/logs', [AdminDashboardController::class, 'logs'])->middleware(['auth','isAdmin', 'verified'])->name('admin.logs');
+
+
+
+
+    Route::get('/broker-dashboard', [BrokerDashboardController::class, 'index'])->middleware('auth', 'isBroker', 'verified' );
+    Route::get('/carrier-dashboard', [CarrierDashboardController::class, 'index'])->middleware('auth', 'isCarrier', 'verified');
+    Route::get('/shipper-dashboard', [ShipperDashboardController::class, 'index'])->middleware('auth', 'isShipper', 'verified');
+    Route::get('/global-user-dashboard', [GlobalUserDashboardController::class, 'index'])->middleware('auth', 'isGlobalUser', 'verified');
 });
 
-Route::get('/account', function (){
-    return "account"; 
-})->middleware(['auth', 'verified'])->name('account');
+// Route::get('/account', function (){
+//     return "account"; 
+// })->middleware(['auth', 'verified'])->name('account');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
