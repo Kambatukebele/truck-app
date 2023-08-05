@@ -63,9 +63,19 @@
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
-
+    {{-- Separator --}}
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Logs</span>
+    </li>
+    {{-- Logs --}}
+    <li class="menu-item">
+      <a href="{{ route('admin.logs') }}" class="menu-link">
+        <i class="menu-icon first-line:fa-solid fa-right-from-bracket"></i>
+        <div data-i18n="Analytics">Logs</div>
+      </a>
+    </li>
     <!-- Layouts -->
-    <li class="menu-item active open">
+    {{-- <li class="menu-item active open">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-layout"></i>
         <div data-i18n="Layouts">Layouts</div>
@@ -98,9 +108,9 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
 
-    <li class="menu-header small text-uppercase">
+    {{-- <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Pages</span>
     </li>
     <li class="menu-item">
@@ -166,18 +176,18 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
     <!-- Components -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+    {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
     <!-- Cards -->
     <li class="menu-item">
       <a href="cards-basic.html" class="menu-link">
         <i class="menu-icon tf-icons bx bx-collection"></i>
         <div data-i18n="Basic">Cards</div>
       </a>
-    </li>
+    </li> --}}
     <!-- User interface -->
-    <li class="menu-item">
+    {{-- <li class="menu-item">
       <a href="javascript:void(0)" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-box"></i>
         <div data-i18n="User interface">User interface</div>
@@ -279,10 +289,10 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
 
     <!-- Extended components -->
-    <li class="menu-item">
+    {{-- <li class="menu-item">
       <a href="javascript:void(0)" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-copy"></i>
         <div data-i18n="Extended UI">Extended UI</div>
@@ -306,10 +316,10 @@
         <i class="menu-icon tf-icons bx bx-crown"></i>
         <div data-i18n="Boxicons">Boxicons</div>
       </a>
-    </li>
+    </li> --}}
 
     <!-- Forms & Tables -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
+    {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
     <!-- Forms -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -346,9 +356,9 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
     <!-- Tables -->
-    <li class="menu-item">
+    {{-- <li class="menu-item">
       <a href="tables-basic.html" class="menu-link">
         <i class="menu-icon tf-icons bx bx-table"></i>
         <div data-i18n="Tables">Tables</div>
@@ -369,6 +379,6 @@
         <i class="menu-icon tf-icons bx bx-file"></i>
         <div data-i18n="Documentation">Documentation</div>
       </a>
-    </li>
+    </li> --}}
   </ul>
 </aside>

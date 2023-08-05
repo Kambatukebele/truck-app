@@ -42,8 +42,8 @@
                 </div>
                 <div class="flex-grow-1">
                   @foreach ($user as $value)
-                  <span class="fw-semibold d-block">{{ $value->name }}</span>
-                  <small class="text-muted">{{ $value->role->title }}</small>
+                  <span class="fw-semibold d-block">{{ Str::ucfirst($value->name) }}</span>
+                  <small class="text-muted">{{ Str::ucfirst($value->role->title) }}</small>
                   @endforeach
                 </div>
               </div>
@@ -77,7 +77,7 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            <form method="POST" action="{{ route('admin.logout') }}">
+            <form method="POST" action="{{ route('logout') }}">
               @csrf
               <button type="submit" class="dropdown-item">
                 <i class="bx bx-power-off me-2"></i>

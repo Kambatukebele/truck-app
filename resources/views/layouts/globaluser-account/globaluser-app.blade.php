@@ -50,13 +50,13 @@
       <div class="layout-container">
         <!-- Menu -->
         {{-- Sidebar --}}
-        @include('layouts.admin-account.admin-sidebar')
+        @include('layouts.globaluser-account.globaluser-sidebar')
         {{-- End Sidebar --}}
         <!-- / Menu -->
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
-          @include('layouts.admin-account.admin-nav')
+          @include('layouts.globaluser-account.globaluser-nav')
           <!-- / Navbar -->
           <!-- Content wrapper -->
           <div class="content-wrapper">

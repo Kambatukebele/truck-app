@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CarrierDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, User $user)
     {
-        return view('account.carrier-dashboard.index'); 
+         $user = User::where('id', $request->user()->id)->with(['role'])->get();
+        return view('account.carrier-dashboard.index', ['user' => $user]); 
     }
 
     /**
@@ -61,5 +64,19 @@ class CarrierDashboardController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Logout User.
+     */
+    public function logout(Request $request)
+    {       
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect('/login');
     }
 }

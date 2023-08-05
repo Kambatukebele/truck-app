@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class BrokerDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, User $user)
     {
-        return view('account/broker-dashboard/index'); 
+        $user = User::where('id', $request->user()->id)->with(['role'])->get();
+        return view('account/broker-dashboard/index', ['user' => $user]); 
     }
 
     /**
@@ -62,4 +65,5 @@ class BrokerDashboardController extends Controller
     {
         //
     }
+
 }

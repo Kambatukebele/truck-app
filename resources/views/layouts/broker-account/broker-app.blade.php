@@ -50,13 +50,13 @@
       <div class="layout-container">
         <!-- Menu -->
         {{-- Sidebar --}}
-        @include('layouts.admin-account.admin-sidebar')
+        @include('layouts.broker-account.broker-sidebar')
         {{-- End Sidebar --}}
         <!-- / Menu -->
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
-          @include('layouts.admin-account.admin-nav')
+          @include('layouts.broker-account.broker-nav')
           <!-- / Navbar -->
           <!-- Content wrapper -->
           <div class="content-wrapper">

@@ -19,9 +19,10 @@ class AdminDashboardController extends Controller
         return view('account/admin-dashboard/index', ['user' => $user]); 
     }
     //delete the function below
-    public function logs()
+    public function logs(Request $request, User $user)
     {
-        return view('account.admin-dashboard.logs'); 
+        $user = User::where('id', $request->user()->id)->with(['role'])->get();
+        return view('account.admin-dashboard.logs', ['user' => $user]); 
     }
 
     /**

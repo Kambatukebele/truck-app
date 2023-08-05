@@ -10,6 +10,7 @@ use App\Http\Controllers\Account\BrokerDashboardController;
 use App\Http\Controllers\Account\CarrierDashboardController;
 use App\Http\Controllers\Account\ShipperDashboardController;
 use App\Http\Controllers\Account\GlobalUserDashboardController;
+use App\Http\Controllers\Account\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,7 @@ Route::get('/retrieve', function (User $user, Role $role){
 Route::prefix('account')->group(function (){
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->middleware(['auth','isAdmin', 'verified'])->name('admin-dashboard');
     Route::get('/admin-dashboard/logs', [AdminDashboardController::class, 'logs'])->middleware(['auth','isAdmin', 'verified'])->name('admin.logs');
-    //Logout Admin user
-    Route::post('/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
+   
 
 
 
@@ -47,6 +47,8 @@ Route::prefix('account')->group(function (){
     Route::get('/carrier-dashboard', [CarrierDashboardController::class, 'index'])->middleware('auth', 'isCarrier', 'verified');
     Route::get('/shipper-dashboard', [ShipperDashboardController::class, 'index'])->middleware('auth', 'isShipper', 'verified');
     Route::get('/global-user-dashboard', [GlobalUserDashboardController::class, 'index'])->middleware('auth', 'isGlobalUser', 'verified');
+     //Logout users
+    Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
 
 // Route::get('/account', function (){

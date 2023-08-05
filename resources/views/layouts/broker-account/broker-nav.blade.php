@@ -41,8 +41,10 @@
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                  <span class="fw-semibold d-block">John Doe</span>
-                  <small class="text-muted">Admin</small>
+                  @foreach ($user as $value)
+                  <span class="fw-semibold d-block">{{ Str::ucfirst($value->name) }}</span>
+                  <small class="text-muted">{{ Str::ucfirst($value->role->title) }}</small>
+                  @endforeach
                 </div>
               </div>
             </a>
@@ -75,10 +77,20 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            <a class="dropdown-item" href="auth-login-basic.html">
-              <i class="bx bx-power-off me-2"></i>
-              <span class="align-middle">Log Out</span>
-            </a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="dropdown-item">
+                <i class="bx bx-power-off me-2"></i>
+                <span class="align-middle">Log Out</span>
+              </button>
+              {{-- <a href="{{ route('logout') }}">
+              <button type="submit">Logout</button>
+              </a> --}}
+              {{-- <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                                    this.closest('form').submit();">
+                            {{ __('Log Out') }}
+              </x-dropdown-link> --}}
+            </form>
           </li>
         </ul>
       </li>
