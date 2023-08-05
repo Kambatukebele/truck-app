@@ -9,17 +9,5 @@ export default {
         "./resources/views/**/*.blade.php",
     ],
 
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-                poppins: ["Poppins", "sans-serif"],
-            },
-            colors: {
-                theBackgroundColor: "#EDF2F9",
-            },
-        },
-    },
-
-    plugins: [forms],
+    theme: {},
 };

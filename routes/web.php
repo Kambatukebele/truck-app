@@ -26,6 +26,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/retrieve', function (User $user, Role $role){
     // $user = Auth::user()->with(['role']); 
     // return $user->role_id; 
@@ -36,6 +37,8 @@ Route::get('/retrieve', function (User $user, Role $role){
 Route::prefix('account')->group(function (){
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->middleware(['auth','isAdmin', 'verified'])->name('admin-dashboard');
     Route::get('/admin-dashboard/logs', [AdminDashboardController::class, 'logs'])->middleware(['auth','isAdmin', 'verified'])->name('admin.logs');
+    //Logout Admin user
+    Route::post('/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
 
 
 

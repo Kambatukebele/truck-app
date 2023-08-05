@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, User $user)
     {
-        return view('account/admin-dashboard/index'); 
+        $user = User::where('id', $request->user()->id)->with(['role'])->get();
+        return view('account/admin-dashboard/index', ['user' => $user]); 
     }
     //delete the function below
     public function logs()
@@ -66,5 +70,19 @@ class AdminDashboardController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Logout User.
+     */
+    public function logout(Request $request)
+    {       
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect('/login');
     }
 }
