@@ -11,6 +11,7 @@ use App\Http\Controllers\Account\CarrierDashboardController;
 use App\Http\Controllers\Account\ShipperDashboardController;
 use App\Http\Controllers\Account\GlobalUserDashboardController;
 use App\Http\Controllers\Account\LogoutController;
+use Spatie\Activitylog\Models\Activity;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ use App\Http\Controllers\Account\LogoutController;
 */
 
 Route::get('/', function () {
+    return Activity::all()->last(); 
     return view('welcome');
 });
 

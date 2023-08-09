@@ -16,6 +16,23 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, LogsActivity;
 
     /**
+     * For Logging activity via spatie
+     */
+    // protected $table = "users";
+    // //Log the changed attributes for all events
+    //protected static $logAttributes = ['name', 'email'];
+    // //Changing password and updated_at will not trigger an activity being logged
+    // protected static $ignoreChangedAttributes = ['password', 'updated_at'];
+
+    // //Logging only the changed attributes
+    // protected static $logOnlyDirty = true;
+
+    // //The created, updated and the deleted event will be logged automatically
+    // protected static $recordEvents = ['create', 'updated', 'deleted'];
+    // //Customizing the log name
+    protected static $logName = 'user';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -54,6 +71,7 @@ class User extends Authenticatable
 
     public function getRedirectRoute()
     {
+        
         return match ((int)$this->role_id) {
             1 => 'account/admin-dashboard',
             2 => 'account/global-user-dashboard',
@@ -64,9 +82,16 @@ class User extends Authenticatable
         };
     }
 
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "User is {$eventName}";
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
-        return LogOptions::defaults();
+        return LogOptions::defaults()
+        ->logFillable()
+        ->useLogName('user');
     }
 
    

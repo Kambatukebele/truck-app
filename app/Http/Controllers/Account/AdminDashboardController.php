@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\Models\Activity;
 
 class AdminDashboardController extends Controller
 {
@@ -19,10 +20,11 @@ class AdminDashboardController extends Controller
         return view('account/admin-dashboard/index', ['user' => $user]); 
     }
     //delete the function below
-    public function logs(Request $request, User $user)
+    public function logs(Request $request, User $user, Activity $activity)
     {
         $user = User::where('id', $request->user()->id)->with(['role'])->get();
-        return view('account.admin-dashboard.logs', ['user' => $user]); 
+        $activity = Activity::all();
+        return view('account.admin-dashboard.logs', ['user' => $user, 'activity' => $activity]); 
     }
 
     /**
