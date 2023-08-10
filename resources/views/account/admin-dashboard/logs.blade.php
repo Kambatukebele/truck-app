@@ -3,7 +3,7 @@
 <!-- Bordered Table -->
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">Daily Logs</h5>
+    <h5 class="card-header">Activity Logs</h5>
     <div class="card-body">
       <div class="table-responsive text-nowrap">
         <form class="form-control"
