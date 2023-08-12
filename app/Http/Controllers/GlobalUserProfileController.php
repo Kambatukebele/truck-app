@@ -9,13 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfileController extends Controller
+class GlobalUserProfileController extends Controller
 {
-    // public function index()
-    // {
-    //     return view('profile.index');
-    // }
-    /**
+   /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View

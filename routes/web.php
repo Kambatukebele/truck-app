@@ -11,6 +11,7 @@ use App\Http\Controllers\Account\CarrierDashboardController;
 use App\Http\Controllers\Account\ShipperDashboardController;
 use App\Http\Controllers\Account\GlobalUserDashboardController;
 use App\Http\Controllers\Account\LogoutController;
+use App\Http\Controllers\AdminProfileController;
 use Spatie\Activitylog\Models\Activity;
 
 /*
@@ -38,16 +39,40 @@ Route::get('/retrieve', function (User $user, Role $role){
 }); 
 
 Route::prefix('account')->group(function (){
+    // Profile
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //End Profile
+    /**
+     * Admin Dashboard
+     */
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->middleware(['auth','isAdmin', 'verified'])->name('admin-dashboard');
     Route::get('/admin-dashboard/logs', [AdminDashboardController::class, 'logs'])->middleware(['auth','isAdmin', 'verified'])->name('admin.logs');
+    
+    //Admin Profile
+    Route::get('/admin-dashboard/profile', [AdminProfileController::class, 'edit'])->middleware(['auth','isAdmin', 'verified'])->name('admin-profile.edit');
+    Route::patch('/admin-dashboard/profile', [AdminProfileController::class, 'update'])->middleware(['auth','isAdmin', 'verified'])->name('admin-profile.update');
+    Route::delete('/admin-dashboard/profile', [AdminProfileController::class, 'destroy'])->middleware(['auth','isAdmin', 'verified'])->name('admin-profile.destroy');
    
 
 
 
-
+    /**
+     * Broker Dashboard
+     */
     Route::get('/broker-dashboard', [BrokerDashboardController::class, 'index'])->middleware('auth', 'isBroker', 'verified' );
+    /**
+     * Carrier Dashboard
+     */
     Route::get('/carrier-dashboard', [CarrierDashboardController::class, 'index'])->middleware('auth', 'isCarrier', 'verified');
+    /**
+     * Shipper Dashboard
+     */
     Route::get('/shipper-dashboard', [ShipperDashboardController::class, 'index'])->middleware('auth', 'isShipper', 'verified');
+    /**
+     * Global Dashboard
+     */
     Route::get('/global-user-dashboard', [GlobalUserDashboardController::class, 'index'])->middleware('auth', 'isGlobalUser', 'verified');
      //Logout users
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
@@ -61,10 +86,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';

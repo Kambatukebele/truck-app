@@ -41,10 +41,8 @@
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                  @foreach ($user as $value)
-                  <span class="fw-semibold d-block">{{ Str::ucfirst($value->name) }}</span>
-                  <small class="text-muted">{{ Str::ucfirst($value->role->title) }}</small>
-                  @endforeach
+                  <span class="fw-semibold d-block">{{ Str::ucfirst($user->name) }}</span>
+                  <small class="text-muted">{{ Str::ucfirst($user->role->title) }}</small>
                 </div>
               </div>
             </a>
@@ -53,7 +51,7 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{ route('admin-profile.edit') }}">
               <i class="bx bx-user me-2"></i>
               <span class="align-middle">My Profile</span>
             </a>

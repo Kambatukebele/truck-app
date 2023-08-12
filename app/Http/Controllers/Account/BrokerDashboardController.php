@@ -15,10 +15,9 @@ class BrokerDashboardController extends Controller
     /**
     * Display a listing of the resource.
     */
-    public function index(Request $request, User $user)
+    public function index(Request $request)
     {
-        $user = User::where('id', $request->user()->id)->with(['role'])->get();
-        return view('account/broker-dashboard/index', ['user' => $user]); 
+        return view('account/broker-dashboard/index', [ 'user' => $request->user()]); 
     }
 
     /**
