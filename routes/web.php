@@ -12,6 +12,8 @@ use App\Http\Controllers\Account\ShipperDashboardController;
 use App\Http\Controllers\Account\GlobalUserDashboardController;
 use App\Http\Controllers\Account\LogoutController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\BrokerProfileController;
+use App\Http\Controllers\LoadController;
 use Spatie\Activitylog\Models\Activity;
 
 /*
@@ -62,6 +64,16 @@ Route::prefix('account')->group(function (){
      * Broker Dashboard
      */
     Route::get('/broker-dashboard', [BrokerDashboardController::class, 'index'])->middleware('auth', 'isBroker', 'verified' );
+    //Broker Profile
+    Route::get('/broker-dashboard/profile', [BrokerProfileController::class, 'edit'])->middleware(['auth','isBroker', 'verified'])->name('broker-profile.edit');
+    Route::patch('/broker-dashboard/profile', [BrokerProfileController::class, 'update'])->middleware(['auth','isBroker', 'verified'])->name('broker-profile.update');
+    Route::delete('/broker-dashboard/profile', [BrokerProfileController::class, 'destroy'])->middleware(['auth','isBroker', 'verified'])->name('broker-profile.destroy');
+
+    //Broker Loads
+    Route::get('/broker-dashboard/loads', [LoadController::class, 'index'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load');
+    Route::get('/broker-dashboard/loads/create', [LoadController::class, 'create'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-create');
+    Route::post('/broker-dashboard/loads/store', [LoadController::class, 'store'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-store');
+   
     /**
      * Carrier Dashboard
      */

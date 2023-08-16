@@ -68,21 +68,21 @@
     <li class="menu-item active open">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-layout"></i>
-        <div data-i18n="Layouts">Layouts</div>
+        <div data-i18n="Layouts">Loads</div>
       </a>
 
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="layouts-without-menu.html" class="menu-link">
-            <div data-i18n="Without menu">Without menu</div>
+          <a href="{{ route('broker-load') }}" class="menu-link">
+            <div data-i18n="Without menu">View Loads</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-without-navbar.html" class="menu-link">
-            <div data-i18n="Without navbar">Without navbar</div>
+          <a href="{{ route('broker-load-create') }}" class="menu-link">
+            <div data-i18n="Without navbar">Post a Load</div>
           </a>
         </li>
-        <li class="menu-item">
+        {{-- <li class="menu-item">
           <a href="layouts-container.html" class="menu-link">
             <div data-i18n="Container">Container</div>
           </a>
@@ -96,11 +96,11 @@
           <a href="layouts-blank.html" class="menu-link">
             <div data-i18n="Blank">Blank</div>
           </a>
-        </li>
+        </li> --}}
       </ul>
     </li>
 
-    <li class="menu-header small text-uppercase">
+    {{-- <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Pages</span>
     </li>
     <li class="menu-item">
@@ -369,6 +369,6 @@
         <i class="menu-icon tf-icons bx bx-file"></i>
         <div data-i18n="Documentation">Documentation</div>
       </a>
-    </li>
+    </li> --}}
   </ul>
 </aside>

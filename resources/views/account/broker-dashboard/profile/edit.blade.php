@@ -1,4 +1,4 @@
-@extends('layouts.admin-account.admin-app') @section('content')
+@extends('layouts.broker-account.broker-app') @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4">
     <span class="text-muted fw-light">Account/</span> Edit your Profile
@@ -18,7 +18,7 @@
           <form id="send-verification" method="post" action="{{ route('verification.send') }}">
             @csrf
           </form>
-          <form method="POST" action="{{ route('admin-profile.update') }}">
+          <form method="POST" action="{{ route('broker-profile.update') }}">
             @csrf
             @method('patch')
             <div class="mb-3">
@@ -154,7 +154,7 @@
           you wish to retain</small>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('admin-profile.destroy') }}">
+        <form method="POST" action="{{ route('broker-profile.destroy') }}">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger">

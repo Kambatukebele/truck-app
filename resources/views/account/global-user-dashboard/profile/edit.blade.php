@@ -39,38 +39,6 @@
                 You can use letters, numbers & periods
               </div>
             </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-email">Company Name</label>
-              <div class="input-group input-group-merge">
-                <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_name" value="" class="form-control" />
-                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-email">Company Address</label>
-              <div class="input-group input-group-merge">
-                <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_address" value="" class="form-control" />
-                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-email">Company Phone Number</label>
-              <div class="input-group input-group-merge">
-                <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_phone_number" value="" class="form-control" />
-                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-email">Company Website</label>
-              <div class="input-group input-group-merge">
-                <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_website" value="" class="form-control" />
-                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
-              </div>
-            </div>
             <div>
               {{-- //Check if User is verified --}}
               @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -154,7 +122,7 @@
           you wish to retain</small>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('admin-profile.destroy') }}">
+        <form method="POST" action="{{ route('profile.destroy') }}">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger">
