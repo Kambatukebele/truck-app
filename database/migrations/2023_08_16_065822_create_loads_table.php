@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('drop_off_date');
             $table->string('status')->default('draft');
             $table->string('pickup_company_name');
-            $table->string('pickup_companny_address');
-            $table->string('pickup_companny_address2')->nullable();
-            $table->string('pickup_companny_city');
-            $table->string('pickup_companny_state');
-            $table->string('pickup_companny_zipcode');
-            $table->string('pickup_companny_phone');
+            $table->string('pickup_company_address');
+            $table->string('pickup_company_address2')->nullable();
+            $table->string('pickup_company_city');
+            $table->string('pickup_company_state');
+            $table->string('pickup_company_zipcode');
+            $table->string('pickup_company_phone');
             $table->string('drop_off_company_name');
             $table->string('drop_off_company_address');
             $table->string('drop_off_company_address2')->nullable();
@@ -41,9 +41,9 @@ return new class extends Migration
             $table->string('commodity');
             $table->string('rate');
             $table->string('dimensions');
-            $table->boolean('hazmat')->default(0);
-            $table->boolean('oversize')->default(0);
-            $table->boolean('military_load')->default(0);
+            $table->string('hazmat')->default(false);
+            $table->string('oversize')->default(false);
+            $table->string('military_load')->default(false);
             $table->timestamps();
         });
     }
