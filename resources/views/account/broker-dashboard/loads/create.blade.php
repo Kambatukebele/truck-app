@@ -333,16 +333,15 @@
             <div class="row">
               <div class="col-md">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hazmat" value="true" />
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hazmat" value="1" />
                   <label class="form-check-label" for="inlineCheckbox1">Hazmat</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="oversize" value="true" />
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="oversize" value="1" />
                   <label class="form-check-label" for="inlineCheckbox2">Oversize</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="military_load"
-                    value="true" />
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="military_load" value="1" />
                   <label class="form-check-label" for="inlineCheckbox2">Military load</label>
                 </div>
               </div>

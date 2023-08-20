@@ -7,6 +7,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -68,6 +69,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class); 
     }
+
+    // public function load(): HasOne
+    // {
+    //     return $this->hasOne(Load::class); 
+    // }
 
     public function getRedirectRoute()
     {

@@ -41,9 +41,9 @@ return new class extends Migration
             $table->string('commodity');
             $table->string('rate');
             $table->string('dimensions');
-            $table->string('hazmat')->default(false);
-            $table->string('oversize')->default(false);
-            $table->string('military_load')->default(false);
+            $table->boolean('hazmat');
+            $table->boolean('oversize');
+            $table->boolean('military_load');
             $table->timestamps();
         });
     }

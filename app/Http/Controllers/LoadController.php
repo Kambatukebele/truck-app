@@ -37,14 +37,14 @@ class LoadController extends Controller
         $validated = $request->validate([
             "pickup_date" => "required|string|",
             "drop_off_date" => "required|string|",
-            "pickup_company_name" => "required|string|",
+            "pickup_company_name" => "required|string|max:60",
             "pickup_company_phone" => "required|string|",
             "pickup_company_address" => "required|string|",
             "pickup_company_address2" => "required|string|",
             "pickup_company_city" => "required|string|",
             "pickup_company_state" => "required|string|",
             "pickup_company_zipcode" => "required|string|",
-            "drop_off_company_name" => "required|string|",
+            "drop_off_company_name" => "required|string|max:60",
             "drop_off_company_phone" => "required|string|",
             "drop_off_company_address" => "required|string|",
             "drop_off_company_address2" => "required|string|",
@@ -59,10 +59,14 @@ class LoadController extends Controller
             "rate" => "required|string|",
             "dimensions" => "required|string|",
             "additional_stops" => "string|nullable",
-            "hazmat" => "string",
-            "oversize" => "string",
-            "military_load" => "string",     
+            "hazmat" => "boolean",
+            "oversize" => "boolean",
+            "military_load" => "boolean",     
         ]);
+
+        $hazmat = ($request->hazmat) ? $request->hazmat : false; 
+        $oversize = ($request->oversize) ? $request->oversize : false;
+        $military_load = ($request->military_load) ? $request->military_load : false;
 
         //Calling the Load model
         $load = new Load;
@@ -90,9 +94,9 @@ class LoadController extends Controller
         $load->rate = $request->rate;
         $load->dimensions = $request->dimensions;
         $load->additional_stops = $request->additional_stops;
-        $load->hazmat = $request->hazmat;
-        $load->oversize = $request->oversize;
-        $load->military_load = $request->military_load;
+        $load->hazmat = $hazmat;
+        $load->oversize = $oversize;
+        $load->military_load = $military_load;
         $load->user_id = $request->user()->id;
         //Store        
 
