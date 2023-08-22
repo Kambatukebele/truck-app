@@ -10,8 +10,9 @@ class LoadController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, Load $load)
     {
+        
         return view('account.broker-dashboard.loads.index', [
             'user' => $request->user(),
         ]);
@@ -35,33 +36,35 @@ class LoadController extends Controller
         
         //Validation
         $validated = $request->validate([
-            "pickup_date" => "required|string|",
-            "drop_off_date" => "required|string|",
-            "pickup_company_name" => "required|string|max:60",
-            "pickup_company_phone" => "required|string|",
-            "pickup_company_address" => "required|string|",
-            "pickup_company_address2" => "required|string|",
-            "pickup_company_city" => "required|string|",
-            "pickup_company_state" => "required|string|",
-            "pickup_company_zipcode" => "required|string|",
-            "drop_off_company_name" => "required|string|max:60",
-            "drop_off_company_phone" => "required|string|",
-            "drop_off_company_address" => "required|string|",
-            "drop_off_company_address2" => "required|string|",
-            "drop_off_company_city" => "required|string|",
-            "drop_off_company_state" => "required|string|",
-            "drop_off_company_zipcode" => "required|string|",
+            "pickup_date" => "required|date|",
+            "drop_off_date" => "required|date|after:pickup_date",
+            "pickup_time" => "required|date_format:H:i",
+            "drop_off_time" => "required|date_format:H:i|after:pickup_time",
+            "pickup_company_name" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "pickup_company_phone" => '|required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            "pickup_company_address" => 'required|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
+            "pickup_company_address2" =>'nullable|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
+            "pickup_company_city" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "pickup_company_state" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "pickup_company_zipcode" => 'required|regex:/\b\d{5}\b/',
+            "drop_off_company_name" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "drop_off_company_phone" => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            "drop_off_company_address" => 'required|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
+            "drop_off_company_address2" => 'nullable|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
+            "drop_off_company_city" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "drop_off_company_state" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "drop_off_company_zipcode" => 'required|regex:/\b\d{5}\b/',
             "status" => "required|string",
-            "required_trailer" => "required|string|",
-            "cargo_weight" => "required|string|",
+            "required_trailer_type" => "required|string|",
+            "cargo_weight" => "required|numeric",
             "load" => "required|string|",
-            "commodity" => "required|string|",
-            "rate" => "required|string|",
-            "dimensions" => "required|string|",
+            "commodity" => "nullable|string|",
+            "rate" => 'required|regex:/^[0-9]{1,3}(,[0-9]{3})*(\.[0-9]+)*$/',
+            "dimensions" => "nullable|string|",
             "additional_stops" => "string|nullable",
-            "hazmat" => "boolean",
-            "oversize" => "boolean",
-            "military_load" => "boolean",     
+            "hazmat" => "nullable|boolean",
+            "oversize" => "nullable|boolean",
+            "military_load" => "nullable|boolean",     
         ]);
 
         $hazmat = ($request->hazmat) ? $request->hazmat : false; 
@@ -72,6 +75,8 @@ class LoadController extends Controller
         $load = new Load;
         $load->pickup_date = $request->pickup_date;
         $load->drop_off_date = $request->drop_off_date;
+        $load->pickup_time = $request->pickup_time;
+        $load->drop_off_time = $request->drop_off_time; 
         $load->pickup_company_name = $request->pickup_company_name;
         $load->pickup_company_phone = $request->pickup_company_phone;
         $load->pickup_company_address = $request->pickup_company_address;
@@ -87,7 +92,7 @@ class LoadController extends Controller
         $load->drop_off_company_state = $request->drop_off_company_state;
         $load->drop_off_company_zipcode = $request->drop_off_company_zipcode;
         $load->status = $request->status;
-        $load->required_trailer = $request->required_trailer;
+        $load->required_trailer_type = $request->required_trailer_type;
         $load->cargo_weight = $request->cargo_weight;
         $load->type_of_load = $request->load;
         $load->commodity = $request->commodity;

@@ -34,13 +34,13 @@ return new class extends Migration
             $table->string('drop_off_company_state');
             $table->string('drop_off_company_zipcode');
             $table->string('drop_off_company_phone');
-            $table->string('required_trailer');
+            $table->string('required_trailer_type');
             $table->string('cargo_weight');
             $table->string('additional_stops')->nullable();
             $table->string('type_of_load');
-            $table->string('commodity');
+            $table->string('commodity')->nullable();
             $table->string('rate');
-            $table->string('dimensions');
+            $table->string('dimensions')->nullable();
             $table->boolean('hazmat');
             $table->boolean('oversize');
             $table->boolean('military_load');
