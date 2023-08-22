@@ -25,6 +25,7 @@ class BrokerProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        ddd($request->user()->fill($request->validated()));
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {

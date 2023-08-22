@@ -41,7 +41,7 @@ class LoadController extends Controller
             "pickup_time" => "required|date_format:H:i",
             "drop_off_time" => "required|date_format:H:i|after:pickup_time",
             "pickup_company_name" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
-            "pickup_company_phone" => '|required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            "pickup_company_phone" => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             "pickup_company_address" => 'required|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
             "pickup_company_address2" =>'nullable|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
             "pickup_company_city" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],

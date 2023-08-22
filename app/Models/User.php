@@ -19,18 +19,7 @@ class User extends Authenticatable
     /**
      * For Logging activity via spatie
      */
-    // protected $table = "users";
-    // //Log the changed attributes for all events
-    //protected static $logAttributes = ['name', 'email'];
-    // //Changing password and updated_at will not trigger an activity being logged
-    // protected static $ignoreChangedAttributes = ['password', 'updated_at'];
-
-    // //Logging only the changed attributes
-    // protected static $logOnlyDirty = true;
-
-    // //The created, updated and the deleted event will be logged automatically
-    // protected static $recordEvents = ['create', 'updated', 'deleted'];
-    // //Customizing the log name
+   
     protected static $logName = 'user';
 
     /**
@@ -43,6 +32,13 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'company_address',
+        'company_address_2',
+        'company_phone',
+        'company_website',
+        'company_city',
+        'company_state',
+        'company_zipcode'
     ];
 
     /**

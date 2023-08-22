@@ -3,7 +3,6 @@
   <h4 class="fw-bold py-3 mb-4">
     <span class="text-muted fw-light">Account/</span> Edit your Profile
   </h4>
-
   <!-- Basic Layout -->
   <div class="row">
     <div class="col-xl">
@@ -43,33 +42,114 @@
               <label class="form-label" for="basic-icon-default-email">Company Name</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_name" value="" class="form-control" />
+                <input type="text" name="company_name" value="{{ old('company_name', $user->company_name) }}"
+                  class="form-control" />
+
                 {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
               </div>
+              @error('company_name')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
             </div>
             <div class="mb-3">
               <label class="form-label" for="basic-icon-default-email">Company Address</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_address" value="" class="form-control" />
+                <input type="text" name="company_address" value="{{ old('company_address', $user->company_address) }}"
+                  class="form-control" />
                 {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
               </div>
+              @error('company_address')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="basic-icon-default-email">Company Address 2 (Optional)</label>
+              <div class="input-group input-group-merge">
+                <span class="input-group-text"><i class="bx bx-company"></i></span>
+                <input type="text" name="company_address_2"
+                  value="{{ old('company_address_2', $user->company_address_2) }}" class="form-control" />
+                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
+              </div>
+              @error('company_address')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
             </div>
             <div class="mb-3">
               <label class="form-label" for="basic-icon-default-email">Company Phone Number</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_phone_number" value="" class="form-control" />
+                <input type="text" name="company_phone" value="{{ old('company_phone', $user->company_phone) }}"
+                  class="form-control" />
                 {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
               </div>
+              @error('company_phone')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
             </div>
             <div class="mb-3">
               <label class="form-label" for="basic-icon-default-email">Company Website</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" id="company_website" value="" class="form-control" />
+                <input type="text" name="company_website" value="{{ old('company_website', $user->company_website) }}"
+                  class="form-control" />
                 {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
               </div>
+              @error('company_website')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="basic-icon-default-email">Company city</label>
+              <div class="input-group input-group-merge">
+                <span class="input-group-text"><i class="bx bx-company"></i></span>
+                <input type="text" name="company_city" value="{{ old('company_city', $user->company_city) }}"
+                  class="form-control" />
+                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
+              </div>
+              @error('company_city')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="basic-icon-default-email">Company State</label>
+              <div class="input-group input-group-merge">
+                <span class="input-group-text"><i class="bx bx-company"></i></span>
+                <input type="text" name="company_state" value="{{ old('company_state', $user->company_state) }}"
+                  class="form-control" />
+                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
+              </div>
+              @error('company_state')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="basic-icon-default-email">Company Zipe Code</label>
+              <div class="input-group input-group-merge">
+                <span class="input-group-text"><i class="bx bx-company"></i></span>
+                <input type="text" name="company_zipecode"
+                  value="{{ old('company_zipecode', $user->company_zipecode) }}" class="form-control" />
+                {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
+              </div>
+              @error('company_zipcode')
+              <h6 class="text-danger mt-1">
+                {{ $message }}
+              </h6>
+              @enderror
             </div>
             <div>
               {{-- //Check if User is verified --}}
