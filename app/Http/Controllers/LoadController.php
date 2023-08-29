@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Load;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LoadController extends Controller
@@ -33,6 +34,7 @@ class LoadController extends Controller
      */
     public function store(Request $request)
     {   
+        return $request; 
         
         //Validation
         $validated = $request->validate([
@@ -140,5 +142,17 @@ class LoadController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * This function is going to help to fetch data via a button in the load page for a broker
+     */
+
+    public function getData(Request $request)
+    {
+        $data = $request->user();
+
+        return response()->json($data); 
+        
     }
 }

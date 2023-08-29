@@ -47,7 +47,7 @@
             <!-- TImes section -->
             <div class="row mb-3">
               <div class="col">
-                <label class="form-label" for="basic-default-fullname">Pickup Time</label>
+                <label class="form-label" for="basic-default-fullname">Estimated Pickup Time</label>
                 <input type="time" class="form-control" placeholder="10:30PM" aria-label="pickup-date"
                   name="pickup_time">
                 @error('pickup_time')
@@ -58,7 +58,7 @@
               </div>
 
               <div class="col">
-                <label class="form-label" for="basic-default-fullname">Drop off Time</label>
+                <label class="form-label" for="basic-default-fullname">Estimated Drop off Time</label>
                 <input type="time" class="form-control" placeholder="12:30PM" aria-label="pickup-date"
                   name="drop_off_time">
                 @error('drop_off_time')
@@ -74,6 +74,9 @@
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Pick up company information</h5>
+          </div>
+          <div class="card-header">
+            <button type="button" class="btn btn-outline-info" id="fetchDataButton">Set address as default</button>
           </div>
           <div class="card-body">
             <div class="row mb-3">

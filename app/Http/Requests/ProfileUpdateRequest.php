@@ -24,7 +24,8 @@ class ProfileUpdateRequest extends FormRequest
             "company_address2" => ['nullable', 'regex:/(^[-0-9A-Za-z.,\/ ]+$)/'],
             "company_city" => ['nullable', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
             "company_state" => ['nullable', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
-            "company_zipcode" => ['nullable', 'regex:/\b\d{5}\b/']        
+            "company_zipcode" => ['nullable', 'regex:/\b\d{5}\b/'],
+            "company_website" => 'nullable|url:http,https',      
         ];
     }
 }

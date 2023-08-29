@@ -71,8 +71,11 @@ Route::prefix('account')->group(function (){
 
     //Broker Loads
     Route::get('/broker-dashboard/loads', [LoadController::class, 'index'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load');
+    //For Loading all user data in to display in the form load
+    Route::get('/broker-dashboard/loads/createdata', [LoadController::class, 'getData'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-createData');
     Route::get('/broker-dashboard/loads/create', [LoadController::class, 'create'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-create');
     Route::post('/broker-dashboard/loads/store', [LoadController::class, 'store'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-store');
+    
    
     /**
      * Carrier Dashboard
