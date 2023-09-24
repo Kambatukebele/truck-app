@@ -33,12 +33,13 @@ class User extends Authenticatable
         'password',
         'role_id',
         'company_address',
+        'company_name', 
         'company_address_2',
         'company_phone',
         'company_website',
         'company_city',
         'company_state',
-        'company_zipcode'
+        'company_zipcode',
     ];
 
     /**

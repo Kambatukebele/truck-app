@@ -27,7 +27,6 @@ class BrokerProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-         
         $request->user()->fill([
             "name" => $request->name,      
             "company_name" => $request->company_name,

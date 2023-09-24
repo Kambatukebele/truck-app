@@ -79,7 +79,7 @@
         </li>
         <li class="menu-item">
           <a href="{{ route('broker-load-create') }}" class="menu-link">
-            <div data-i18n="Without navbar">Post a Load</div>
+            <div data-i18n="Without navbar">Create a Load</div>
           </a>
         </li>
         {{-- <li class="menu-item">

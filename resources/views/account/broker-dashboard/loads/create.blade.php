@@ -76,14 +76,21 @@
             <h5 class="mb-0">Pick up company information</h5>
           </div>
           <div class="card-header">
-            <button type="button" class="btn btn-outline-info" id="fetchDataButton">Set address as default</button>
+            <button style="display: block" type="button" class="btn btn-outline-primary" id="fetchDefaultAddress">
+              Set address as
+              default
+            </button>
+            <button style="display: none" type="button" class="btn btn-outline-primary" id="removeDefaultAddress">
+              Remove default Address
+            </button>
           </div>
+          {{-- {{ $user }} --}}
           <div class="card-body">
             <div class="row mb-3">
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Pickup Company Name</label>
                 <input type="text" class="form-control" placeholder="Text" aria-label="pickp-address"
-                  name="pickup_company_name" value="{{ old('pickup_company_name') }}">
+                  name="pickup_company_name" value="{{ old('pickup_company_name') }}" id="pickup_company_name">
                 @error('pickup_company_name')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -93,7 +100,7 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Pickup Company Phone Number</label>
                 <input type="text" class="form-control" placeholder="Text" aria-label="pickp-address"
-                  name="pickup_company_phone" value="{{ old('pickup_company_phone') }}">
+                  name="pickup_company_phone" value="{{ old('pickup_company_phone') }}" id="pickup_company_phone">
                 @error('pickup_company_phone')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -105,7 +112,7 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Pickup Company Address</label>
                 <input type="text" class="form-control" placeholder="Text" aria-label="pickp-address"
-                  name="pickup_company_address" value="{{ old('pickup_company_address') }}">
+                  name="pickup_company_address" value="{{ old('pickup_company_address') }}" id="pickup_company_address">
                 @error('pickup_company_address')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -115,7 +122,8 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Pickup Company Address 2 (Optional)</label>
                 <input type="text" class="form-control" placeholder="Text" aria-label="pickp-address"
-                  name="pickup_company_address2" value="{{ old('pickup_company_address2') }}">
+                  name="pickup_company_address2" value="{{ old('pickup_company_address2') }}"
+                  id="pickup_company_address2">
                 @error('pickup_company_address2')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -127,7 +135,7 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Pickup Company City</label>
                 <input type="text" class="form-control" placeholder="Text" aria-label="pickp-address"
-                  name="pickup_company_city" value="{{ old('pickup_company_city') }}">
+                  name="pickup_company_city" value="{{ old('pickup_company_city') }}" id="pickup_company_city">
                 @error('pickup_company_city')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -137,7 +145,7 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Pickup Company State</label>
                 <input type="text" class="form-control" placeholder="Text" aria-label="pickp-address"
-                  name="pickup_company_state" value="{{ old('pickup_company_state') }}">
+                  name="pickup_company_state" value="{{ old('pickup_company_state') }}" id="pickup_company_state">
                 @error('pickup_company_state')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -149,7 +157,7 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Pickup Company Zipecode</label>
                 <input type="text" class="form-control" placeholder="Text" aria-label="pickp-address"
-                  name="pickup_company_zipcode" value="{{ old('pickup_company_zipcode') }}">
+                  name="pickup_company_zipcode" value="{{ old('pickup_company_zipcode') }}" id="pickup_company_zipcode">
                 @error('pickup_company_zipcode')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -378,6 +386,12 @@
 
           </div>
         </div> --}}
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header">
+        <a href="#"><button type="button" class="mb-0 btn btn-primary">Add additional stops</button></a>
+
       </div>
     </div>
     <div class="card mb-4">

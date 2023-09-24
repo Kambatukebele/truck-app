@@ -9,6 +9,9 @@
     {{ session('status') }}
   </div>
   @endif
+
+  {{ $user->company_zipcode
+   }}
   <!-- Basic Layout -->
   <div class="row">
     <div class="col-xl">
@@ -147,8 +150,8 @@
               <label class="form-label" for="basic-icon-default-email">Company Zipe Code</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-company"></i></span>
-                <input type="text" name="company_zipecode"
-                  value="{{ old('company_zipecode', $user->company_zipecode) }}" class="form-control" />
+                <input type="text" name="company_zipcode" value="{{ old('company_zipcode', $user->company_zipcode) }}"
+                  class="form-control" />
                 {{-- <span id="basic-icon-default-email2" class="input-group-text">@example.com</span> --}}
               </div>
               @error('company_zipcode')
