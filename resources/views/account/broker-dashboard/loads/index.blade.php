@@ -3,7 +3,8 @@
 <!-- Bootstrap Table with Header - Footer -->
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">Current Loads</h5>
+    <h5 class="card-header">{{ $loads }}Current Loads</h5>
+
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>
@@ -20,16 +21,17 @@
           </tr>
         </thead>
         <tbody>
+          @foreach ($loads as $load)
           <tr>
-            <td>From 12.2.90 to 12.2.90</td>
-            <td>KambaLLC</td>
-            <td>HusseinLLC </td>
-            <td>Milasnka 45</td>
-            <td>Zelena 33</td>
-            <td>$4500</td>
-            <td>FL</td>
+            <td>From {{ $load->pickup_time }} to {{ $load->drop_off_time }} </td>
+            <td>{{ $load->pickup_company_name }}</td>
+            <td>{{ $load->drop_off_company_name }}</td>
+            <td>{{ $load->pickup_company_address }}</td>
+            <td>{{ $load->drop_off_company_address }}</td>
+            <td>{{ $load->rate }}</td>
+            <td>{{ $load->load }}</td>
             <td>
-              <span class="badge bg-label-primary me-1">Active</span>
+              <span class="badge bg-label-primary me-1">{{ $load->status }}</span>
             </td>
             <td>
               <div class="dropdown">
@@ -37,61 +39,14 @@
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu">
-
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                  <a href="{{ route('broker-load-edit', ['id' => $load->id]) }}" class="dropdown-item"
+                    href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                   <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                 </div>
               </div>
             </td>
           </tr>
-          <tr>
-            <td>From 12.2.90 to 12.2.90</td>
-            <td>KambaLLC</td>
-            <td>HusseinLLC </td>
-            <td>Milasnka 45</td>
-            <td>Zelena 33</td>
-            <td>$4500</td>
-            <td>FL</td>
-            <td>
-              <span class="badge bg-label-primary me-1">Active</span>
-            </td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>From 12.2.90 to 12.2.90</td>
-            <td>KambaLLC</td>
-            <td>HusseinLLC </td>
-            <td>Milasnka 45</td>
-            <td>Zelena 33</td>
-            <td>$4500</td>
-            <td>FL</td>
-            <td>
-              <span class="badge bg-label-primary me-1">Active</span>
-            </td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                </div>
-              </div>
-            </td>
-          </tr>
+          @endforeach
         </tbody>
         <tfoot class="table-border-bottom-0">
           <tr>

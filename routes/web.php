@@ -73,6 +73,7 @@ Route::prefix('account')->group(function (){
     Route::get('/broker-dashboard/loads', [LoadController::class, 'index'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load');
     Route::get('/broker-dashboard/loads/create', [LoadController::class, 'create'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-create');
     Route::post('/broker-dashboard/loads/store', [LoadController::class, 'store'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-store');
+    Route::post('/broker-dashboard/loads/edit/{id}', [LoadController::class, 'edit'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-edit');
     //To fetch data on Click using JavaScript
     Route::get('/broker-dashboard/loads/get-data', [LoadController::class, 'getData'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-get-data'); 
     

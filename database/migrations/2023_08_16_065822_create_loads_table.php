@@ -17,6 +17,8 @@ return new class extends Migration
             ->constrained()
             ->cascadeOnDelete()
             ->cascadeOnUpdate();
+            $table->string('pickup_time');
+            $table->string('drop_off_time');
             $table->string('pickup_date');
             $table->string('drop_off_date');
             $table->string('status')->default('draft');

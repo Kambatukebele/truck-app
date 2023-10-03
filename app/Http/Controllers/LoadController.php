@@ -11,11 +11,13 @@ class LoadController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, Load $load)
+    public function index(Request $request)
     {
+        $loads = Load::latest()->paginate(10);
         
         return view('account.broker-dashboard.loads.index', [
-            'user' => $request->user(),
+            'loads' => $loads,
+            'user' => $request->user(),            
         ]);
     }
 
@@ -40,19 +42,19 @@ class LoadController extends Controller
             "drop_off_date" => "required|date|after:pickup_date",
             "pickup_time" => "required|date_format:H:i",
             "drop_off_time" => "required|date_format:H:i|after:pickup_time",
-            "pickup_company_name" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "pickup_company_name" => ['required', 'string'],
             "pickup_company_phone" => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             "pickup_company_address" => 'required|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
             "pickup_company_address2" =>'nullable|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
-            "pickup_company_city" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
-            "pickup_company_state" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "pickup_company_city" => ['required', 'string'],
+            "pickup_company_state" => ['required', 'string'],
             "pickup_company_zipcode" => 'required|regex:/\b\d{5}\b/',
-            "drop_off_company_name" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "drop_off_company_name" => ['required', 'string'],
             "drop_off_company_phone" => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             "drop_off_company_address" => 'required|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
             "drop_off_company_address2" => 'nullable|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
-            "drop_off_company_city" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
-            "drop_off_company_state" => ['required', 'regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/'],
+            "drop_off_company_city" => ['required', 'string'],
+            "drop_off_company_state" => ['required', 'string'],
             "drop_off_company_zipcode" => 'required|regex:/\b\d{5}\b/',
             "status" => "required|string",
             "required_trailer_type" => "required|string|",
@@ -121,9 +123,13 @@ class LoadController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $load = Load::find($id);
+
+        return view('account.broker-dashboard.loads.edit', [
+            'load' => $load,
+        ]);
     }
 
     /**

@@ -49,7 +49,7 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Estimated Pickup Time</label>
                 <input type="time" class="form-control" placeholder="10:30PM" aria-label="pickup-date"
-                  name="pickup_time">
+                  name="pickup_time" value="{{ old('pickup_time') }}">
                 @error('pickup_time')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
@@ -60,7 +60,7 @@
               <div class="col">
                 <label class="form-label" for="basic-default-fullname">Estimated Drop off Time</label>
                 <input type="time" class="form-control" placeholder="12:30PM" aria-label="pickup-date"
-                  name="drop_off_time">
+                  name="drop_off_time" value="{{ old('drop_off_time') }}">
                 @error('drop_off_time')
                 <h6 class="text-danger mt-1">
                   {{ $message }}
