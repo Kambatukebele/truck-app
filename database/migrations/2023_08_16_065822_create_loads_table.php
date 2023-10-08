@@ -43,9 +43,11 @@ return new class extends Migration
             $table->string('commodity')->nullable();
             $table->string('rate');
             $table->string('dimensions')->nullable();
+            $table->string('distance');
             $table->boolean('hazmat');
             $table->boolean('oversize');
             $table->boolean('military_load');
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }

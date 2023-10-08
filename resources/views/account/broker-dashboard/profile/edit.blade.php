@@ -9,9 +9,6 @@
     {{ session('status') }}
   </div>
   @endif
-
-  {{ $user->company_zipcode
-   }}
   <!-- Basic Layout -->
   <div class="row">
     <div class="col-xl">

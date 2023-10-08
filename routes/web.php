@@ -71,9 +71,12 @@ Route::prefix('account')->group(function (){
 
     //Broker Loads
     Route::get('/broker-dashboard/loads', [LoadController::class, 'index'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load');
-    Route::get('/broker-dashboard/loads/create', [LoadController::class, 'create'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-create');
+    Route::get('/broker-dashboard/loads/create', [LoadController::class, 'create'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-create');    
     Route::post('/broker-dashboard/loads/store', [LoadController::class, 'store'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-store');
-    Route::post('/broker-dashboard/loads/edit/{id}', [LoadController::class, 'edit'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-edit');
+    Route::get('/broker-dashboard/loads/edit/{id}', [LoadController::class, 'edit'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-edit');
+    Route::put('/broker-dashboard/loads/update/{id}', [LoadController::class, 'update'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-update');
+    Route::delete('/broker-dashboard/loads/destroy/{id}', [LoadController::class, 'destroy'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-destroy');
+   
     //To fetch data on Click using JavaScript
     Route::get('/broker-dashboard/loads/get-data', [LoadController::class, 'getData'])->middleware(['auth', 'isBroker', 'verified'])->name('broker-load-get-data'); 
     

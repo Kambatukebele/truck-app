@@ -3,8 +3,12 @@
 <!-- Bootstrap Table with Header - Footer -->
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">{{ $loads }}Current Loads</h5>
-
+    <h5 class="card-header">Current Loads</h5>
+    @if (session('status'))
+    <script>
+      alert({{ session('status') }})
+    </script>
+    @endif
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead>
@@ -30,8 +34,12 @@
             <td>{{ $load->drop_off_company_address }}</td>
             <td>{{ $load->rate }}</td>
             <td>{{ $load->load }}</td>
-            <td>
-              <span class="badge bg-label-primary me-1">{{ $load->status }}</span>
+            <td >
+              @if ($load->status === "active")
+                <span class="btn btn-primary">{{ $load->status }}</span>
+              @else
+                <span class="btn btn-danger">{{ $load->status }}</span>
+              @endif              
             </td>
             <td>
               <div class="dropdown">
@@ -39,9 +47,18 @@
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu">
-                  <a href="{{ route('broker-load-edit', ['id' => $load->id]) }}" class="dropdown-item"
-                    href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                  <a href="{{ route('broker-load-edit', ['id' => $load->id]) }}" class="dropdown-item" href="javascript:void(0);">
+                    <i class="bx bx-edit-alt me-1"></i>
+                     Edit
+                  </a>
+                  <form action="{{ route('broker-load-destroy', ['id' => $load->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="dropdown-item">
+                      <i class="bx bx-trash me-1"></i>
+                         Delete
+                    </button>
+                  </form>
                 </div>
               </div>
             </td>
